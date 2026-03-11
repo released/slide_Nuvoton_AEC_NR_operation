@@ -1,0 +1,645 @@
+<!DOCTYPE html><html><head>
+      <title>index</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css">
+      
+      
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.min.js"></script>
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<p><a href="https://released.github.io/">return to index</a></p>
+<p><a id="article_top" href=""></a></p>
+<h1 id="nuvoton-aec--nr-operation-flow">Nuvoton AEC / NR operation flow </h1>
+<h2 id="agenda">Agenda </h2>
+<ul>
+<li>Test objective and environment checklist</li>
+<li>USB audio device enumeration</li>
+<li>GoldWave recording settings</li>
+<li>AEC / NR operation and capture flow</li>
+<li>Playback analysis (Stereo / Mono channel behavior)</li>
+<li>Pass criteria and troubleshooting notes</li>
+</ul>
+<hr>
+<p><a id="article_overview" href=""></a></p>
+<h2 id="1-test-objective-and-setup">1. Test objective and setup </h2>
+<h3 id="test-objective">Test objective </h3>
+<ul>
+<li>Verify that <code>AEC / NR</code> works correctly when EVB runs in USB UAC mode.</li>
+<li>Build a repeatable recording flow for before/after comparison.</li>
+<li>Avoid incorrect conclusions caused by channel settings (<code>AEC / NR</code> supports <code>MONO</code> only).</li>
+</ul>
+<h3 id="lab-setup-checklist">Lab setup checklist </h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVB</td>
+<td><code>I94124_NAU88C22_MB_REVC</code></td>
+<td>Test board</td>
+</tr>
+<tr>
+<td>FW</td>
+<td>AEC / NR library + USB UAC enable</td>
+<td>Firmware must enable the algorithm</td>
+</tr>
+<tr>
+<td>Audio tool</td>
+<td>GoldWave</td>
+<td>Recording / playback / channel check</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>GoldWave release page: <a href="https://goldwave.com/release.php">https://goldwave.com/release.php</a></li>
+</ul>
+<p><img src="img/evb_1.jpg" alt=""></p>
+<p><img src="img/sch_1.jpg" alt=""></p>
+<hr>
+<p><a id="article_usb" href=""></a></p>
+<h2 id="2-usb-connection-and-device-check">2. USB connection and device check </h2>
+<ol>
+<li>Connect EVB to the PC through USB.</li>
+<li>Confirm that the OS enumerates:
+<ul>
+<li><code>Speaker Nuvoton UAC</code></li>
+<li><code>Microphone Nuvoton UAC</code></li>
+</ul>
+</li>
+<li>Confirm speaker and microphone paths are both active before recording.</li>
+</ol>
+<blockquote>
+<p><strong>Important</strong><br>
+If <code>Speaker</code> and <code>Microphone</code> are not enumerated correctly, fix USB cable/driver/power issues first, then run AEC / NR tests.</p>
+</blockquote>
+<p><img src="img/USB_01.jpg" alt=""></p>
+<hr>
+<p><a id="article_goldwave" href=""></a></p>
+<h2 id="3-goldwave-settings">3. GoldWave settings </h2>
+<p>In GoldWave, open <code>Control related properties &gt; Devices</code> and set:</p>
+<ul>
+<li><code>Playback Device</code> : <code>Speaker Nuvoton UAC</code></li>
+<li><code>Record Device</code> : <code>Microphone Nuvoton UAC</code></li>
+</ul>
+<p>This ensures both record and playback use the EVB audio path so AEC / NR behavior can be observed correctly.</p>
+<p><img src="img/GoldWave_01.jpg" alt=""></p>
+<p><img src="img/GoldWave_02.jpg" alt=""></p>
+<hr>
+<p><a id="article_recording" href=""></a></p>
+<h2 id="4-aec--nr-recording-flow">4. AEC / NR recording flow </h2>
+<div class="mermaid">flowchart TD
+    A[Connect EVB as USB UAC] --&gt; B[Configure GoldWave devices]
+    B --&gt; C[Start recording]
+    C --&gt; D[Play far-end content music/news]
+    D --&gt; E[Speak near-end voice]
+    E --&gt; F[Stop and save wav file]
+    F --&gt; G[Playback and analyze channels]
+</div><h3 id="recording-procedure">Recording procedure </h3>
+<ol>
+<li>Start recording.</li>
+<li>Play background content (music, speech, or news) to simulate far-end audio.</li>
+<li>Add near-end speech at the same time and observe echo/noise suppression in the recorded file.</li>
+<li>Stop recording and save the WAV file.</li>
+</ol>
+<p><img src="img/GoldWave_03.jpg" alt=""></p>
+<hr>
+<p><a id="article_samples" href=""></a></p>
+<h2 id="5-sample-files-and-playback-interpretation">5. Sample files and playback interpretation </h2>
+<h3 id="sample-files">Sample files </h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Content</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="img/test1.wav">test1.wav</a></td>
+<td>Music (English)</td>
+<td>Background-audio scenario</td>
+</tr>
+<tr>
+<td><a href="img/test2.wav">test2.wav</a></td>
+<td>News broadcast</td>
+<td>Speech-interference scenario</td>
+</tr>
+<tr>
+<td><a href="img/test3.wav">test3.wav</a></td>
+<td>Music (Chinese)</td>
+<td>Mixed-content scenario</td>
+</tr>
+</tbody>
+</table>
+<h3 id="playback-observation">Playback observation </h3>
+<ol>
+<li>In default <code>Stereo</code> playback, background audio and voice can both be heard.</li>
+<li>When switched to right channel (<code>AEC / NR</code> supports <code>MONO</code> only), voice content should be dominant.</li>
+<li>Use channel switching to verify whether the algorithm output path matches expectation.</li>
+</ol>
+<p><img src="img/GoldWave_05.jpg" alt=""></p>
+<p><img src="img/GoldWave_03.jpg" alt=""></p>
+<p><img src="img/GoldWave_04.jpg" alt=""></p>
+<hr>
+<p><a id="article_checklist" href=""></a></p>
+<h2 id="6-validation-points-and-troubleshooting">6. Validation points and troubleshooting </h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Possible cause</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No recorded audio</td>
+<td>Wrong record device</td>
+<td>Re-select <code>Microphone Nuvoton UAC</code></td>
+</tr>
+<tr>
+<td>No playback audio</td>
+<td>Wrong playback device</td>
+<td>Re-select <code>Speaker Nuvoton UAC</code></td>
+</tr>
+<tr>
+<td>Weak AEC effect</td>
+<td>Far-end level too low / unstable mic distance</td>
+<td>Increase background level and keep fixed mic distance</td>
+</tr>
+<tr>
+<td>Listening result does not match expectation</td>
+<td>Using Stereo result to judge MONO algorithm</td>
+<td>Switch channel first, then compare</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Validation note</strong><br>
+Keep test conditions fixed (volume, distance, noise source) to compare AEC / NR performance across firmware versions fairly.</p>
+</blockquote>
+<hr>
+<p><a id="article_summary" href=""></a></p>
+<h2 id="7-summary">7. Summary </h2>
+<ul>
+<li>Complete USB UAC enumeration and GoldWave device binding before test.</li>
+<li>Inject both far-end and near-end signals during recording to validate AEC / NR.</li>
+<li>Account for <code>MONO</code> support limitation during playback analysis.</li>
+<li>Keep one fixed sample set for regression comparison across firmware versions.</li>
+</ul>
+<p><a href="#article_top">back to top</a></p>
+<hr>
+<p><a id="article_top_zh" href=""></a></p>
+<h1 id="nuvoton-aec--nr-操作流程">Nuvoton AEC / NR 操作流程 </h1>
+<h2 id="議程">議程 </h2>
+<ul>
+<li>測試目標與環境檢查</li>
+<li>USB 音訊裝置列舉確認</li>
+<li>GoldWave 錄音設定</li>
+<li>AEC / NR 操作與錄製流程</li>
+<li>回放分析（Stereo / Mono 聲道行為）</li>
+<li>驗收條件與除錯建議</li>
+</ul>
+<hr>
+<p><a id="article_overview_zh" href=""></a></p>
+<h2 id="1-測試目標與環境">1. 測試目標與環境 </h2>
+<h3 id="測試目標">測試目標 </h3>
+<ul>
+<li>驗證 EVB 在 USB UAC 模式下，<code>AEC / NR</code> 是否可正常運作。</li>
+<li>建立可重現的錄音流程，便於比較啟用前後差異。</li>
+<li>避免因聲道設定造成誤判（<code>AEC / NR</code> 僅支援 <code>MONO</code>）。</li>
+</ul>
+<h3 id="實驗室環境檢查表">實驗室環境檢查表 </h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>設定值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVB</td>
+<td><code>I94124_NAU88C22_MB_REVC</code></td>
+<td>測試板</td>
+</tr>
+<tr>
+<td>FW</td>
+<td>AEC / NR library + USB UAC enable</td>
+<td>韌體需啟用演算法</td>
+</tr>
+<tr>
+<td>音訊工具</td>
+<td>GoldWave</td>
+<td>錄音 / 回放 / 聲道檢查</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>GoldWave 下載頁：<a href="https://goldwave.com/release.php">https://goldwave.com/release.php</a></li>
+</ul>
+<p><img src="img/evb_1.jpg" alt=""></p>
+<p><img src="img/sch_1.jpg" alt=""></p>
+<hr>
+<p><a id="article_usb_zh" href=""></a></p>
+<h2 id="2-usb-連線與裝置確認">2. USB 連線與裝置確認 </h2>
+<ol>
+<li>使用 USB 將 EVB 連接到 PC。</li>
+<li>確認作業系統已列舉出：
+<ul>
+<li><code>Speaker Nuvoton UAC</code></li>
+<li><code>Microphone Nuvoton UAC</code></li>
+</ul>
+</li>
+<li>確認喇叭與麥克風路徑都可正常使用，再進行錄音。</li>
+</ol>
+<blockquote>
+<p><strong>Important</strong><br>
+若 <code>Speaker</code> 與 <code>Microphone</code> 未正確列舉，請先排除 USB 線材、驅動與供電問題，再進行 AEC / NR 測試。</p>
+</blockquote>
+<p><img src="img/USB_01.jpg" alt=""></p>
+<hr>
+<p><a id="article_goldwave_zh" href=""></a></p>
+<h2 id="3-goldwave-設定">3. GoldWave 設定 </h2>
+<p>在 GoldWave 開啟 <code>Control related properties &gt; Devices</code>，設定如下：</p>
+<ul>
+<li><code>Playback Device</code> : <code>Speaker Nuvoton UAC</code></li>
+<li><code>Record Device</code> : <code>Microphone Nuvoton UAC</code></li>
+</ul>
+<p>此設定可確保錄音與回放都走 EVB 音訊路徑，才能正確觀察 AEC / NR 行為。</p>
+<p><img src="img/GoldWave_01.jpg" alt=""></p>
+<p><img src="img/GoldWave_02.jpg" alt=""></p>
+<hr>
+<p><a id="article_recording_zh" href=""></a></p>
+<h2 id="4-aec--nr-錄音流程">4. AEC / NR 錄音流程 </h2>
+<div class="mermaid">flowchart TD
+    A[Connect EVB as USB UAC] --&gt; B[Configure GoldWave devices]
+    B --&gt; C[Start recording]
+    C --&gt; D[Play far-end content music/news]
+    D --&gt; E[Speak near-end voice]
+    E --&gt; F[Stop and save wav file]
+    F --&gt; G[Playback and analyze channels]
+</div><h3 id="錄音步驟">錄音步驟 </h3>
+<ol>
+<li>開始錄音。</li>
+<li>播放背景內容（音樂、語音或新聞）模擬 far-end 音訊。</li>
+<li>同時加入 near-end 人聲，觀察錄音檔中的回音/噪音抑制效果。</li>
+<li>停止錄音並儲存 WAV 檔。</li>
+</ol>
+<p><img src="img/GoldWave_03.jpg" alt=""></p>
+<hr>
+<p><a id="article_samples_zh" href=""></a></p>
+<h2 id="5-測試檔案與回放判讀">5. 測試檔案與回放判讀 </h2>
+<h3 id="測試檔案">測試檔案 </h3>
+<table>
+<thead>
+<tr>
+<th>檔案</th>
+<th>內容</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="img/test1.wav">test1.wav</a></td>
+<td>音樂（英文）</td>
+<td>背景音情境測試</td>
+</tr>
+<tr>
+<td><a href="img/test2.wav">test2.wav</a></td>
+<td>新聞播報</td>
+<td>語音干擾情境測試</td>
+</tr>
+<tr>
+<td><a href="img/test3.wav">test3.wav</a></td>
+<td>音樂（中文）</td>
+<td>混合內容情境測試</td>
+</tr>
+</tbody>
+</table>
+<h3 id="回放觀察重點">回放觀察重點 </h3>
+<ol>
+<li>預設 <code>Stereo</code> 回放時，通常可同時聽到背景音與人聲。</li>
+<li>切到右聲道時（<code>AEC / NR</code> 僅支援 <code>MONO</code>），人聲會較為明顯。</li>
+<li>透過聲道切換，確認演算法輸出路徑是否符合預期。</li>
+</ol>
+<p><img src="img/GoldWave_05.jpg" alt=""></p>
+<p><img src="img/GoldWave_03.jpg" alt=""></p>
+<p><img src="img/GoldWave_04.jpg" alt=""></p>
+<hr>
+<p><a id="article_checklist_zh" href=""></a></p>
+<h2 id="6-驗收重點與除錯建議">6. 驗收重點與除錯建議 </h2>
+<table>
+<thead>
+<tr>
+<th>現象</th>
+<th>可能原因</th>
+<th>建議處理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>錄不到聲音</td>
+<td>錄音裝置選錯</td>
+<td>重新選擇 <code>Microphone Nuvoton UAC</code></td>
+</tr>
+<tr>
+<td>回放無聲</td>
+<td>播放裝置選錯</td>
+<td>重新選擇 <code>Speaker Nuvoton UAC</code></td>
+</tr>
+<tr>
+<td>AEC 效果不明顯</td>
+<td>far-end 音量太小 / 麥克風距離不穩定</td>
+<td>提高背景音量並固定收音距離</td>
+</tr>
+<tr>
+<td>聽感與預期不一致</td>
+<td>用 Stereo 結果判讀 MONO 演算法</td>
+<td>先切換聲道再比較</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Validation note</strong><br>
+請固定測試條件（音量、距離、噪音來源），以便公平比較不同韌體版本的 AEC / NR 表現。</p>
+</blockquote>
+<hr>
+<p><a id="article_summary_zh" href=""></a></p>
+<h2 id="7-summary-1">7. Summary </h2>
+<ul>
+<li>測試前先完成 USB UAC 列舉與 GoldWave 裝置綁定。</li>
+<li>錄音時同時注入 far-end 與 near-end 訊號，才能有效驗證 AEC / NR。</li>
+<li>回放分析需考慮 <code>MONO</code> 支援限制，避免聲道誤判。</li>
+<li>建議固定測試樣本，作為韌體版本回歸比較基準。</li>
+</ul>
+<p><a href="#article_top_zh">back to Chinese top</a></p>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#nuvoton-aec--nr-operation-flow" class="md-toc-link"><p>Nuvoton AEC / NR operation flow</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#agenda" class="md-toc-link">
+            <p>Agenda</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#1-test-objective-and-setup" class="md-toc-link"><ol>
+<li>Test objective and setup</li>
+</ol>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#test-objective" class="md-toc-link">
+            <p>Test objective</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#lab-setup-checklist" class="md-toc-link">
+            <p>Lab setup checklist</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#2-usb-connection-and-device-check" class="md-toc-link">
+            <ol start="2">
+<li>USB connection and device check</li>
+</ol>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#3-goldwave-settings" class="md-toc-link">
+            <ol start="3">
+<li>GoldWave settings</li>
+</ol>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#4-aec--nr-recording-flow" class="md-toc-link"><ol start="4">
+<li>AEC / NR recording flow</li>
+</ol>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#recording-procedure" class="md-toc-link">
+            <p>Recording procedure</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#5-sample-files-and-playback-interpretation" class="md-toc-link"><ol start="5">
+<li>Sample files and playback interpretation</li>
+</ol>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#sample-files" class="md-toc-link">
+            <p>Sample files</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#playback-observation" class="md-toc-link">
+            <p>Playback observation</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#6-validation-points-and-troubleshooting" class="md-toc-link">
+            <ol start="6">
+<li>Validation points and troubleshooting</li>
+</ol>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#7-summary" class="md-toc-link">
+            <ol start="7">
+<li>Summary</li>
+</ol>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#nuvoton-aec--nr-操作流程" class="md-toc-link"><p>Nuvoton AEC / NR 操作流程</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#議程" class="md-toc-link">
+            <p>議程</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#1-測試目標與環境" class="md-toc-link"><ol>
+<li>測試目標與環境</li>
+</ol>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#測試目標" class="md-toc-link">
+            <p>測試目標</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#實驗室環境檢查表" class="md-toc-link">
+            <p>實驗室環境檢查表</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#2-usb-連線與裝置確認" class="md-toc-link">
+            <ol start="2">
+<li>USB 連線與裝置確認</li>
+</ol>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#3-goldwave-設定" class="md-toc-link">
+            <ol start="3">
+<li>GoldWave 設定</li>
+</ol>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#4-aec--nr-錄音流程" class="md-toc-link"><ol start="4">
+<li>AEC / NR 錄音流程</li>
+</ol>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#錄音步驟" class="md-toc-link">
+            <p>錄音步驟</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#5-測試檔案與回放判讀" class="md-toc-link"><ol start="5">
+<li>測試檔案與回放判讀</li>
+</ol>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#測試檔案" class="md-toc-link">
+            <p>測試檔案</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#回放觀察重點" class="md-toc-link">
+            <p>回放觀察重點</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#6-驗收重點與除錯建議" class="md-toc-link">
+            <ol start="6">
+<li>驗收重點與除錯建議</li>
+</ol>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#7-summary-1" class="md-toc-link">
+            <ol start="7">
+<li>Summary</li>
+</ol>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    <script type="module">
+// TODO: If ZenUML gets integrated into mermaid in the future,
+//      we can remove the following lines.
+
+
+var MERMAID_CONFIG = ({"startOnLoad":false});
+if (typeof MERMAID_CONFIG !== 'undefined') {
+  MERMAID_CONFIG.startOnLoad = false
+  MERMAID_CONFIG.cloneCssStyles = false
+  MERMAID_CONFIG.theme = "default"
+}
+
+mermaid.initialize(MERMAID_CONFIG || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidetransitionend', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+  await mermaid.run({
+    nodes: document.querySelectorAll('.mermaid')
+  })
+} else {
+  await mermaid.run({
+    nodes: document.querySelectorAll('.mermaid')
+  })
+}
+</script>
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>
