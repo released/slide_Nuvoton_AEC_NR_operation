@@ -1,8 +1,16 @@
-﻿[return to index](https://released.github.io/)
+﻿[回到知識庫總索引](https://released.github.io/)
 
 <a id="article_top"></a>
 
 # Nuvoton AEC / NR operation flow
+
+> 這是一份雙語實驗指南，用來建立可重複的 USB Audio AEC / NR 錄音、回放與驗收流程。判讀前請先確認裝置列舉、聲道模式與測試音源一致。
+
+## Reading guide
+
+- Follow the English procedure first for setup, capture, playback, and troubleshooting.
+- The Traditional Chinese section later in this page mirrors the same workflow.
+- Preserve the original recording files and settings when comparing AEC / NR on and off.
 
 ## Agenda
 
