@@ -6,10 +6,10 @@
 
 > 這是一份雙語實驗指南，用來建立可重複的 USB Audio AEC / NR 錄音、回放與驗收流程。判讀前請先確認裝置列舉、聲道模式與測試音源一致。
 
-## Reading guide
+## Content map
 
-- Follow the English procedure first for setup, capture, playback, and troubleshooting.
-- The Traditional Chinese section later in this page mirrors the same workflow.
+- The English section records setup, capture, playback, and troubleshooting.
+- The Traditional Chinese section records the same workflow.
 - Preserve the original recording files and settings when comparing AEC / NR on and off.
 
 ## Agenda
@@ -174,7 +174,7 @@ flowchart TD
 * GoldWave 錄音設定
 * AEC / NR 操作與錄製流程
 * 回放分析（Stereo / Mono 聲道行為）
-* 驗收條件與除錯建議
+* 驗收條件與除錯資訊
 
 ---
 
@@ -291,9 +291,9 @@ flowchart TD
 
 <a id="article_checklist_zh"></a>
 
-## 6. 驗收重點與除錯建議
+## 6. 驗收重點與除錯資訊
 
-| 現象 | 可能原因 | 建議處理 |
+| 現象 | 可能原因 | 處理方式 |
 |------|----------|----------|
 | 錄不到聲音 | 錄音裝置選錯 | 重新選擇 `Microphone Nuvoton UAC` |
 | 回放無聲 | 播放裝置選錯 | 重新選擇 `Speaker Nuvoton UAC` |
@@ -312,6 +312,6 @@ flowchart TD
 * 測試前先完成 USB UAC 列舉與 GoldWave 裝置綁定。
 * 錄音時同時注入 far-end 與 near-end 訊號，才能有效驗證 AEC / NR。
 * 回放分析需考慮 `MONO` 支援限制，避免聲道誤判。
-* 建議固定測試樣本，作為韌體版本回歸比較基準。
+* 固定測試樣本可作為韌體版本回歸比較基準。
 
 [back to Chinese top](#article_top_zh)
