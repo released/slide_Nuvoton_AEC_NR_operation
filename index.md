@@ -86,7 +86,7 @@ This ensures both record and playback use the EVB audio path so AEC / NR behavio
 
 <a id="article_audacity"></a>
 
-## 4. Audacity settings and channel review
+## 4. Audacity settings
 
 ### Device selection
 
@@ -105,24 +105,7 @@ The two-channel recording preserves both UAC channels for analysis. It does not 
 
 ![Audacity Audio Setup — two-channel recording](img/Audacity_04.jpg)
 
-### Split and monitor the captured channels
-
-1. Record the far-end and near-end signals to produce a two-channel waveform.
-2. Open the track menu (`...`) and select `Split Stereo to Mono`.
-3. Use the pan controls when left/right spatial separation is useful; the screenshot places the upper track at left and the lower track at right.
-4. Use `Mute` and `Solo` to monitor one track at a time. The illustrated state mutes the upper track and solos the lower track; reverse the selection to monitor the other channel.
-
-![Audacity two-channel waveform before splitting](img/Audacity_05.jpg)
-
-![Audacity track menu — Split Stereo to Mono](img/Audacity_05_set.jpg)
-
-![Audacity split mono tracks with left and right pan settings](img/Audacity_06_split.jpg)
-
-![Audacity isolated monitoring with Mute and Solo](img/Audacity_07.jpg)
-
-The upper and lower tracks retain the captured channel order. Channel meaning is determined from the firmware definition and a known test signal; waveform amplitude alone does not identify the AEC / NR output.
-
-Reference: [Audacity Audio Setup Toolbar](https://manual.audacityteam.org/man/audio_setup_toolbar.html) and [Splitting and Joining Stereo Tracks](https://manual.audacityteam.org/man/splitting_and_joining_stereo_tracks.html).
+Reference: [Audacity Audio Setup Toolbar](https://manual.audacityteam.org/man/audio_setup_toolbar.html).
 
 ---
 
@@ -147,7 +130,17 @@ flowchart TD
 3. Add near-end speech at the same time and observe echo/noise suppression in the recorded file.
 4. Stop recording and save the WAV file.
 
+### GoldWave recording view
+
+GoldWave displays the captured signal in the recording window.
+
 ![Recording procedure — GoldWave 03](img/GoldWave_03.jpg)
+
+### Audacity recording view
+
+With `Recording Channels` set to `2 (Stereo)`, Audacity displays the two captured channels in one track. The waveform provides the input for the channel review in the next section.
+
+![Audacity two-channel waveform after recording](img/Audacity_05.jpg)
 
 ---
 
@@ -169,11 +162,29 @@ flowchart TD
 2. When switched to right channel (`AEC / NR` supports `MONO` only), voice content should be dominant.
 3. Use channel switching to verify whether the algorithm output path matches expectation.
 
+### GoldWave channel review
+
 ![Playback observation — GoldWave 05](img/GoldWave_05.jpg)
 
 ![Playback observation — GoldWave 03](img/GoldWave_03.jpg)
 
 ![Playback observation — GoldWave 04](img/GoldWave_04.jpg)
+
+### Audacity channel review
+
+1. Open the track menu (`...`) and select `Split Stereo to Mono`.
+2. Use the pan controls when left/right spatial separation is useful; the screenshot places the upper track at left and the lower track at right.
+3. Use `Mute` and `Solo` to monitor one track at a time. The illustrated state mutes the upper track and solos the lower track; reverse the selection to monitor the other channel.
+
+![Audacity track menu — Split Stereo to Mono](img/Audacity_05_set.jpg)
+
+![Audacity split mono tracks with left and right pan settings](img/Audacity_06_split.jpg)
+
+![Audacity isolated monitoring with Mute and Solo](img/Audacity_07.jpg)
+
+The upper and lower tracks retain the captured channel order. Channel meaning is determined from the firmware definition and a known test signal; waveform amplitude alone does not identify the AEC / NR output.
+
+Reference: [Audacity Splitting and Joining Stereo Tracks](https://manual.audacityteam.org/man/splitting_and_joining_stereo_tracks.html).
 
 ---
 
@@ -287,7 +298,7 @@ flowchart TD
 
 <a id="article_audacity_zh"></a>
 
-## 4. Audacity 設定與聲道檢視
+## 4. Audacity 設定
 
 ### 裝置選擇
 
@@ -306,24 +317,7 @@ flowchart TD
 
 ![Audacity 聲音設定：選擇雙聲道錄音](img/Audacity_04.jpg)
 
-### 拆分與單獨監聽聲道
-
-1. 同時錄下 far-end 與 near-end 訊號，取得雙聲道波形。
-2. 開啟音軌選單（`...`），選擇 `將立體聲分割為單聲道`。
-3. 需要左右空間分離時，可調整聲像；截圖將上方音軌設於左側、下方音軌設於右側。
-4. 使用 `靜音` 與 `獨奏` 逐一監聽音軌。截圖狀態為上方音軌靜音、下方音軌獨奏；對調設定即可監聽另一個聲道。
-
-![Audacity 拆分前的雙聲道波形](img/Audacity_05.jpg)
-
-![Audacity 音軌選單：將立體聲分割為單聲道](img/Audacity_05_set.jpg)
-
-![Audacity 拆分後的兩條 Mono 音軌與左右聲像設定](img/Audacity_06_split.jpg)
-
-![Audacity 使用靜音與獨奏進行單獨監聽](img/Audacity_07.jpg)
-
-上、下音軌保留原始擷取聲道的順序。聲道意義應依韌體定義及已知測試訊號判定，不能只由波形振幅辨識 AEC / NR 輸出。
-
-參考資料：[Audacity Audio Setup Toolbar](https://manual.audacityteam.org/man/audio_setup_toolbar.html) 與 [Splitting and Joining Stereo Tracks](https://manual.audacityteam.org/man/splitting_and_joining_stereo_tracks.html)。
+參考資料：[Audacity Audio Setup Toolbar](https://manual.audacityteam.org/man/audio_setup_toolbar.html)。
 
 ---
 
@@ -348,7 +342,17 @@ flowchart TD
 3. 同時加入 near-end 人聲，觀察錄音檔中的回音/噪音抑制效果。
 4. 停止錄音並儲存 WAV 檔。
 
+### GoldWave 錄音畫面
+
+GoldWave 會在錄音視窗顯示擷取到的訊號。
+
 ![錄音步驟 — GoldWave 03](img/GoldWave_03.jpg)
+
+### Audacity 錄音畫面
+
+`錄製聲道` 設為 `2 (立體聲)` 時，Audacity 會在同一條音軌顯示兩個擷取聲道。這份波形可接續用於下一章的聲道判讀。
+
+![Audacity 錄音完成後的雙聲道波形](img/Audacity_05.jpg)
 
 ---
 
@@ -370,11 +374,29 @@ flowchart TD
 2. 切到右聲道時（`AEC / NR` 僅支援 `MONO`），人聲會較為明顯。
 3. 透過聲道切換，確認演算法輸出路徑是否符合預期。
 
+### GoldWave 聲道判讀
+
 ![回放觀察重點 — GoldWave 05](img/GoldWave_05.jpg)
 
 ![回放觀察重點 — GoldWave 03](img/GoldWave_03.jpg)
 
 ![回放觀察重點 — GoldWave 04](img/GoldWave_04.jpg)
+
+### Audacity 聲道判讀
+
+1. 開啟音軌選單（`...`），選擇 `將立體聲分割為單聲道`。
+2. 需要左右空間分離時，可調整聲像；截圖將上方音軌設於左側、下方音軌設於右側。
+3. 使用 `靜音` 與 `獨奏` 逐一監聽音軌。截圖狀態為上方音軌靜音、下方音軌獨奏；對調設定即可監聽另一個聲道。
+
+![Audacity 音軌選單：將立體聲分割為單聲道](img/Audacity_05_set.jpg)
+
+![Audacity 拆分後的兩條 Mono 音軌與左右聲像設定](img/Audacity_06_split.jpg)
+
+![Audacity 使用靜音與獨奏進行單獨監聽](img/Audacity_07.jpg)
+
+上、下音軌保留原始擷取聲道的順序。聲道意義應依韌體定義及已知測試訊號判定，不能只由波形振幅辨識 AEC / NR 輸出。
+
+參考資料：[Audacity Splitting and Joining Stereo Tracks](https://manual.audacityteam.org/man/splitting_and_joining_stereo_tracks.html)。
 
 ---
 
