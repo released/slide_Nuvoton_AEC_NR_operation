@@ -1,10 +1,10 @@
-﻿[回到知識庫總索引](https://released.github.io/)
+[回到知識庫總索引](https://released.github.io/)
 
 <a id="article_top"></a>
 
 # Nuvoton AEC / NR operation flow
 
-> 這是一份雙語實驗指南，用來建立可重複的 USB Audio AEC / NR 錄音、回放與驗收流程。判讀前請先確認裝置列舉、聲道模式與測試音源一致。
+> 這是一份雙語實驗指南，用來建立可重複的 USB Audio AEC / NR 錄音、回放與驗收流程。判讀條件包含一致的裝置列舉、聲道模式與測試音源。
 
 ## Content map
 
@@ -43,9 +43,9 @@
 
 * GoldWave release page: <https://goldwave.com/release.php>
 
-![](img/evb_1.jpg)
+![Lab setup checklist — evb 1](img/evb_1.jpg)
 
-![](img/sch_1.jpg)
+![Lab setup checklist — sch 1](img/sch_1.jpg)
 
 ---
 
@@ -62,7 +62,7 @@
 > **Important**
 > If `Speaker` and `Microphone` are not enumerated correctly, fix USB cable/driver/power issues first, then run AEC / NR tests.
 
-![](img/USB_01.jpg)
+![2. USB connection and device check — USB 01](img/USB_01.jpg)
 
 ---
 
@@ -77,9 +77,9 @@ In GoldWave, open `Control related properties > Devices` and set:
 
 This ensures both record and playback use the EVB audio path so AEC / NR behavior can be observed correctly.
 
-![](img/GoldWave_01.jpg)
+![3. GoldWave settings — GoldWave 01](img/GoldWave_01.jpg)
 
-![](img/GoldWave_02.jpg)
+![3. GoldWave settings — GoldWave 02](img/GoldWave_02.jpg)
 
 ---
 
@@ -104,7 +104,7 @@ flowchart TD
 3. Add near-end speech at the same time and observe echo/noise suppression in the recorded file.
 4. Stop recording and save the WAV file.
 
-![](img/GoldWave_03.jpg)
+![Recording procedure — GoldWave 03](img/GoldWave_03.jpg)
 
 ---
 
@@ -126,11 +126,11 @@ flowchart TD
 2. When switched to right channel (`AEC / NR` supports `MONO` only), voice content should be dominant.
 3. Use channel switching to verify whether the algorithm output path matches expectation.
 
-![](img/GoldWave_05.jpg)
+![Playback observation — GoldWave 05](img/GoldWave_05.jpg)
 
-![](img/GoldWave_03.jpg)
+![Playback observation — GoldWave 03](img/GoldWave_03.jpg)
 
-![](img/GoldWave_04.jpg)
+![Playback observation — GoldWave 04](img/GoldWave_04.jpg)
 
 ---
 
@@ -198,9 +198,9 @@ flowchart TD
 
 * GoldWave 下載頁：<https://goldwave.com/release.php>
 
-![](img/evb_1.jpg)
+![實驗室環境檢查表 — evb 1](img/evb_1.jpg)
 
-![](img/sch_1.jpg)
+![實驗室環境檢查表 — sch 1](img/sch_1.jpg)
 
 ---
 
@@ -215,9 +215,9 @@ flowchart TD
 3. 確認喇叭與麥克風路徑都可正常使用，再進行錄音。
 
 > **Important**
-> 若 `Speaker` 與 `Microphone` 未正確列舉，請先排除 USB 線材、驅動與供電問題，再進行 AEC / NR 測試。
+> 若 `Speaker` 與 `Microphone` 未正確列舉，可由 USB 線材、驅動與供電狀態開始排查；裝置列舉正常後再進行 AEC / NR 測試。
 
-![](img/USB_01.jpg)
+![2. USB 連線與裝置確認 — USB 01](img/USB_01.jpg)
 
 ---
 
@@ -232,9 +232,9 @@ flowchart TD
 
 此設定可確保錄音與回放都走 EVB 音訊路徑，才能正確觀察 AEC / NR 行為。
 
-![](img/GoldWave_01.jpg)
+![3. GoldWave 設定 — GoldWave 01](img/GoldWave_01.jpg)
 
-![](img/GoldWave_02.jpg)
+![3. GoldWave 設定 — GoldWave 02](img/GoldWave_02.jpg)
 
 ---
 
@@ -259,7 +259,7 @@ flowchart TD
 3. 同時加入 near-end 人聲，觀察錄音檔中的回音/噪音抑制效果。
 4. 停止錄音並儲存 WAV 檔。
 
-![](img/GoldWave_03.jpg)
+![錄音步驟 — GoldWave 03](img/GoldWave_03.jpg)
 
 ---
 
@@ -281,11 +281,11 @@ flowchart TD
 2. 切到右聲道時（`AEC / NR` 僅支援 `MONO`），人聲會較為明顯。
 3. 透過聲道切換，確認演算法輸出路徑是否符合預期。
 
-![](img/GoldWave_05.jpg)
+![回放觀察重點 — GoldWave 05](img/GoldWave_05.jpg)
 
-![](img/GoldWave_03.jpg)
+![回放觀察重點 — GoldWave 03](img/GoldWave_03.jpg)
 
-![](img/GoldWave_04.jpg)
+![回放觀察重點 — GoldWave 04](img/GoldWave_04.jpg)
 
 ---
 
@@ -301,7 +301,7 @@ flowchart TD
 | 聽感與預期不一致 | 用 Stereo 結果判讀 MONO 演算法 | 先切換聲道再比較 |
 
 > **Validation note**
-> 請固定測試條件（音量、距離、噪音來源），以便公平比較不同韌體版本的 AEC / NR 表現。
+> 不同韌體版本的 AEC / NR 表現，需要在相同音量、距離與噪音來源等測試條件下比較。
 
 ---
 
