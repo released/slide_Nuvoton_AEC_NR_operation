@@ -4,7 +4,7 @@
 
 # Nuvoton AEC / NR operation flow
 
-> 這是一份雙語實驗指南，用來建立可重複的 USB Audio AEC / NR 錄音、回放與驗收流程。判讀條件包含一致的裝置列舉、聲道模式與測試音源。
+> This bilingual guide describes a repeatable USB Audio AEC / NR recording, playback, and validation flow. Comparable results use consistent device enumeration, channel mode, and test signals.
 
 ## Content map
 
@@ -16,7 +16,7 @@
 
 * Test objective and environment checklist
 * USB audio device enumeration
-* GoldWave recording settings
+* GoldWave / Audacity device and recording settings
 * AEC / NR operation and capture flow
 * Playback analysis (Stereo / Mono channel behavior)
 * Pass criteria and troubleshooting notes
@@ -31,7 +31,7 @@
 
 * Verify that `AEC / NR` works correctly when EVB runs in USB UAC mode.
 * Build a repeatable recording flow for before/after comparison.
-* Avoid incorrect conclusions caused by channel settings (`AEC / NR` supports `MONO` only).
+* Account for the channel configuration when interpreting results (`AEC / NR` supports `MONO` only).
 
 ### Lab setup checklist
 
@@ -39,9 +39,10 @@
 |------|-------|------|
 | EVB | `I94124_NAU88C22_MB_REVC` | Test board |
 | FW | AEC / NR library + USB UAC enable | Firmware must enable the algorithm |
-| Audio tool | GoldWave | Recording / playback / channel check |
+| Audio tool | GoldWave or Audacity | Recording / playback / channel check |
 
 * GoldWave release page: <https://goldwave.com/release.php>
+* Audacity download page: <https://www.audacityteam.org/download/>
 
 ![Lab setup checklist — evb 1](img/evb_1.jpg)
 
@@ -59,8 +60,8 @@
    * `Microphone Nuvoton UAC`
 3. Confirm speaker and microphone paths are both active before recording.
 
-> **Important**
-> If `Speaker` and `Microphone` are not enumerated correctly, fix USB cable/driver/power issues first, then run AEC / NR tests.
+> **Operating condition**
+> AEC / NR recording starts after both `Speaker` and `Microphone` are enumerated. Missing devices indicate that the USB cable, driver, or power state requires checking.
 
 ![2. USB connection and device check — USB 01](img/USB_01.jpg)
 
@@ -83,13 +84,55 @@ This ensures both record and playback use the EVB audio path so AEC / NR behavio
 
 ---
 
+<a id="article_audacity"></a>
+
+## 4. Audacity settings and channel review
+
+### Device selection
+
+1. Open `Audio Setup` and select `Rescan Audio Devices` after the EVB is connected.
+2. Set `Playback Device` to `Speakers (Nuvoton UAC)`.
+3. Set `Recording Device` to `Microphone (Nuvoton UAC)`.
+4. Set `Recording Channels` to `2 (Stereo)` so both captured channels remain available for comparison.
+
+The two-channel recording preserves both UAC channels for analysis. It does not change the AEC / NR library's `MONO` processing limitation.
+
+![Audacity Audio Setup — rescan audio devices](img/Audacity_01.jpg)
+
+![Audacity Audio Setup — Nuvoton UAC playback device](img/Audacity_02.jpg)
+
+![Audacity Audio Setup — Nuvoton UAC recording device](img/Audacity_03.jpg)
+
+![Audacity Audio Setup — two-channel recording](img/Audacity_04.jpg)
+
+### Split and monitor the captured channels
+
+1. Record the far-end and near-end signals to produce a two-channel waveform.
+2. Open the track menu (`...`) and select `Split Stereo to Mono`.
+3. Use the pan controls when left/right spatial separation is useful; the screenshot places the upper track at left and the lower track at right.
+4. Use `Mute` and `Solo` to monitor one track at a time. The illustrated state mutes the upper track and solos the lower track; reverse the selection to monitor the other channel.
+
+![Audacity two-channel waveform before splitting](img/Audacity_05.jpg)
+
+![Audacity track menu — Split Stereo to Mono](img/Audacity_05_set.jpg)
+
+![Audacity split mono tracks with left and right pan settings](img/Audacity_06_split.jpg)
+
+![Audacity isolated monitoring with Mute and Solo](img/Audacity_07.jpg)
+
+The upper and lower tracks retain the captured channel order. Channel meaning is determined from the firmware definition and a known test signal; waveform amplitude alone does not identify the AEC / NR output.
+
+Reference: [Audacity Audio Setup Toolbar](https://manual.audacityteam.org/man/audio_setup_toolbar.html) and [Splitting and Joining Stereo Tracks](https://manual.audacityteam.org/man/splitting_and_joining_stereo_tracks.html).
+
+---
+
 <a id="article_recording"></a>
 
-## 4. AEC / NR recording flow
+## 5. AEC / NR recording flow
 
 ```mermaid
 flowchart TD
-    A[Connect EVB as USB UAC] --> B[Configure GoldWave devices]
+    A[Connect EVB as USB UAC] --> B[Configure audio tool devices]
     B --> C[Start recording]
     C --> D[Play far-end content music/news]
     D --> E[Speak near-end voice]
@@ -110,7 +153,7 @@ flowchart TD
 
 <a id="article_samples"></a>
 
-## 5. Sample files and playback interpretation
+## 6. Sample files and playback interpretation
 
 ### Sample files
 
@@ -136,12 +179,14 @@ flowchart TD
 
 <a id="article_checklist"></a>
 
-## 6. Validation points and troubleshooting
+## 7. Validation points and troubleshooting
 
 | Symptom | Possible cause | Action |
 |------|------|------|
 | No recorded audio | Wrong record device | Re-select `Microphone Nuvoton UAC` |
 | No playback audio | Wrong playback device | Re-select `Speaker Nuvoton UAC` |
+| Nuvoton UAC is missing in Audacity | Device list was opened before enumeration completed | Select `Audio Setup > Rescan Audio Devices` |
+| Channels cannot be reviewed separately | Recording was captured as one channel | Select `2 (Stereo)` before recording, then use `Split Stereo to Mono` |
 | Weak AEC effect | Far-end level too low / unstable mic distance | Increase background level and keep fixed mic distance |
 | Listening result does not match expectation | Using Stereo result to judge MONO algorithm | Switch channel first, then compare |
 
@@ -152,11 +197,12 @@ flowchart TD
 
 <a id="article_summary"></a>
 
-## 7. Summary
+## 8. Summary
 
-* Complete USB UAC enumeration and GoldWave device binding before test.
+* Complete USB UAC enumeration and bind the selected GoldWave or Audacity devices before capture.
 * Inject both far-end and near-end signals during recording to validate AEC / NR.
 * Account for `MONO` support limitation during playback analysis.
+* Audacity can preserve a Stereo capture and split it into two Mono tracks for isolated monitoring.
 * Keep one fixed sample set for regression comparison across firmware versions.
 
 [back to top](#article_top)
@@ -171,7 +217,7 @@ flowchart TD
 
 * 測試目標與環境檢查
 * USB 音訊裝置列舉確認
-* GoldWave 錄音設定
+* GoldWave／Audacity 裝置與錄音設定
 * AEC / NR 操作與錄製流程
 * 回放分析（Stereo / Mono 聲道行為）
 * 驗收條件與除錯資訊
@@ -186,7 +232,7 @@ flowchart TD
 
 * 驗證 EVB 在 USB UAC 模式下，`AEC / NR` 是否可正常運作。
 * 建立可重現的錄音流程，便於比較啟用前後差異。
-* 避免因聲道設定造成誤判（`AEC / NR` 僅支援 `MONO`）。
+* 將聲道設定納入結果判讀（`AEC / NR` 僅支援 `MONO`）。
 
 ### 實驗室環境檢查表
 
@@ -194,9 +240,10 @@ flowchart TD
 |------|-------|------|
 | EVB | `I94124_NAU88C22_MB_REVC` | 測試板 |
 | FW | AEC / NR library + USB UAC enable | 韌體需啟用演算法 |
-| 音訊工具 | GoldWave | 錄音 / 回放 / 聲道檢查 |
+| 音訊工具 | GoldWave 或 Audacity | 錄音 / 回放 / 聲道檢查 |
 
 * GoldWave 下載頁：<https://goldwave.com/release.php>
+* Audacity 下載頁：<https://www.audacityteam.org/download/>
 
 ![實驗室環境檢查表 — evb 1](img/evb_1.jpg)
 
@@ -214,8 +261,8 @@ flowchart TD
    * `Microphone Nuvoton UAC`
 3. 確認喇叭與麥克風路徑都可正常使用，再進行錄音。
 
-> **Important**
-> 若 `Speaker` 與 `Microphone` 未正確列舉，可由 USB 線材、驅動與供電狀態開始排查；裝置列舉正常後再進行 AEC / NR 測試。
+> **操作條件**
+> `Speaker` 與 `Microphone` 均完成列舉後再開始 AEC / NR 錄音。裝置缺少時，可檢查 USB 線材、驅動及供電狀態。
 
 ![2. USB 連線與裝置確認 — USB 01](img/USB_01.jpg)
 
@@ -238,13 +285,55 @@ flowchart TD
 
 ---
 
+<a id="article_audacity_zh"></a>
+
+## 4. Audacity 設定與聲道檢視
+
+### 裝置選擇
+
+1. EVB 完成連線後，開啟 `聲音設定`，選擇 `重新掃描聲音裝置`。
+2. `播放裝置` 選擇 `喇叭 (Nuvoton UAC)`。
+3. `錄製裝置` 選擇 `麥克風 (Nuvoton UAC)`。
+4. `錄製聲道` 選擇 `2 (立體聲)`，保留兩個擷取聲道供後續比較。
+
+雙聲道錄音用於保留 UAC 的兩個擷取聲道，不會改變 AEC / NR library 僅處理 `MONO` 的限制。
+
+![Audacity 聲音設定：重新掃描聲音裝置](img/Audacity_01.jpg)
+
+![Audacity 聲音設定：選擇 Nuvoton UAC 播放裝置](img/Audacity_02.jpg)
+
+![Audacity 聲音設定：選擇 Nuvoton UAC 錄製裝置](img/Audacity_03.jpg)
+
+![Audacity 聲音設定：選擇雙聲道錄音](img/Audacity_04.jpg)
+
+### 拆分與單獨監聽聲道
+
+1. 同時錄下 far-end 與 near-end 訊號，取得雙聲道波形。
+2. 開啟音軌選單（`...`），選擇 `將立體聲分割為單聲道`。
+3. 需要左右空間分離時，可調整聲像；截圖將上方音軌設於左側、下方音軌設於右側。
+4. 使用 `靜音` 與 `獨奏` 逐一監聽音軌。截圖狀態為上方音軌靜音、下方音軌獨奏；對調設定即可監聽另一個聲道。
+
+![Audacity 拆分前的雙聲道波形](img/Audacity_05.jpg)
+
+![Audacity 音軌選單：將立體聲分割為單聲道](img/Audacity_05_set.jpg)
+
+![Audacity 拆分後的兩條 Mono 音軌與左右聲像設定](img/Audacity_06_split.jpg)
+
+![Audacity 使用靜音與獨奏進行單獨監聽](img/Audacity_07.jpg)
+
+上、下音軌保留原始擷取聲道的順序。聲道意義應依韌體定義及已知測試訊號判定，不能只由波形振幅辨識 AEC / NR 輸出。
+
+參考資料：[Audacity Audio Setup Toolbar](https://manual.audacityteam.org/man/audio_setup_toolbar.html) 與 [Splitting and Joining Stereo Tracks](https://manual.audacityteam.org/man/splitting_and_joining_stereo_tracks.html)。
+
+---
+
 <a id="article_recording_zh"></a>
 
-## 4. AEC / NR 錄音流程
+## 5. AEC / NR 錄音流程
 
 ```mermaid
 flowchart TD
-    A[Connect EVB as USB UAC] --> B[Configure GoldWave devices]
+    A[Connect EVB as USB UAC] --> B[Configure audio tool devices]
     B --> C[Start recording]
     C --> D[Play far-end content music/news]
     D --> E[Speak near-end voice]
@@ -265,7 +354,7 @@ flowchart TD
 
 <a id="article_samples_zh"></a>
 
-## 5. 測試檔案與回放判讀
+## 6. 測試檔案與回放判讀
 
 ### 測試檔案
 
@@ -291,12 +380,14 @@ flowchart TD
 
 <a id="article_checklist_zh"></a>
 
-## 6. 驗收重點與除錯資訊
+## 7. 驗收重點與除錯資訊
 
 | 現象 | 可能原因 | 處理方式 |
 |------|----------|----------|
 | 錄不到聲音 | 錄音裝置選錯 | 重新選擇 `Microphone Nuvoton UAC` |
 | 回放無聲 | 播放裝置選錯 | 重新選擇 `Speaker Nuvoton UAC` |
+| Audacity 未顯示 Nuvoton UAC | 開啟裝置清單時列舉尚未完成 | 選擇 `聲音設定 > 重新掃描聲音裝置` |
+| 無法分別檢視兩個聲道 | 錄音時只擷取單聲道 | 錄音前選擇 `2 (立體聲)`，完成後執行 `將立體聲分割為單聲道` |
 | AEC 效果不明顯 | far-end 音量太小 / 麥克風距離不穩定 | 提高背景音量並固定收音距離 |
 | 聽感與預期不一致 | 用 Stereo 結果判讀 MONO 演算法 | 先切換聲道再比較 |
 
@@ -307,11 +398,12 @@ flowchart TD
 
 <a id="article_summary_zh"></a>
 
-## 7. Summary
+## 8. 摘要
 
-* 測試前先完成 USB UAC 列舉與 GoldWave 裝置綁定。
+* 錄音前完成 USB UAC 列舉，並設定選用的 GoldWave 或 Audacity 裝置。
 * 錄音時同時注入 far-end 與 near-end 訊號，才能有效驗證 AEC / NR。
 * 回放分析需考慮 `MONO` 支援限制，避免聲道誤判。
+* Audacity 可保留 Stereo 錄音，再拆成兩條 Mono 音軌進行單獨監聽。
 * 固定測試樣本可作為韌體版本回歸比較基準。
 
 [back to Chinese top](#article_top_zh)

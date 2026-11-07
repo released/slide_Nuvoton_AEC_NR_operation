@@ -10,13 +10,19 @@
 ## 內容範圍
 
 - EVB 的 USB UAC speaker／microphone 列舉狀態。
-- GoldWave 的播放與錄音裝置設定。
+- GoldWave 與 Audacity 的播放、錄音裝置設定。
+- Audacity 的 Stereo 錄音、Mono 音軌拆分及單獨聲道監聽。
 - far-end 與 near-end 訊號的錄製流程。
 - AEC／NR 開啟與關閉時的回放比較。
 - Mono 聲道限制、驗收條件與常見異常排查。
 
 ## 操作條件與資料
 
-頁面以 `I94124_NAU88C22_MB_REVC` EVB、USB UAC 韌體及 GoldWave 為操作組合。[GoldWave release page](https://goldwave.com/release.php) 提供錄音工具資訊；實際比較需保留相同音量、距離、噪音來源、聲道模式與錄音檔案。
+頁面以 `I94124_NAU88C22_MB_REVC` EVB、USB UAC 韌體，以及 GoldWave 或 Audacity 為操作組合。
 
-正文中的 EVB、電路、裝置列舉與 GoldWave 畫面用於對照操作狀態。AEC／NR 的效果仍會受到麥克風、喇叭、聲學環境及韌體參數影響。
+- [GoldWave release page](https://goldwave.com/release.php)
+- [Audacity download page](https://www.audacityteam.org/download/)
+
+不同工具的比較需保留相同音量、距離、噪音來源、聲道模式與錄音檔案。
+
+正文中的 EVB、電路、裝置列舉、GoldWave 與 Audacity 畫面用於對照操作狀態。AEC／NR 的效果仍會受到麥克風、喇叭、聲學環境及韌體參數影響。
